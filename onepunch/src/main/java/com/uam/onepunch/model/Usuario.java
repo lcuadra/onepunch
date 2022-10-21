@@ -25,4 +25,9 @@ public class Usuario {
     @JoinColumn(name = "id_persona")
     @JsonProperty ( access = JsonProperty.Access.WRITE_ONLY)
     private Persona persona;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_tipoCuenta", referencedColumnName = "id")
+    private TipoCuenta tipoCuenta;
+
 }

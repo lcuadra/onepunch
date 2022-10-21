@@ -1,6 +1,7 @@
 package com.uam.onepunch.service;
 
 import com.uam.onepunch.model.Persona;
+import com.uam.onepunch.model.Usuario;
 import com.uam.onepunch.repository.IPersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,10 +23,19 @@ public class impServicePersona implements IServicePersona {
         return repo.findById(id).get();
     }
 
-
     @Override
     public Persona savePersona(Persona persona) {
-        return repo.save(persona);
+
+        Persona o = new Persona();
+        o.setNombres((persona.getNombres()));
+        o.setEmail(persona.getEmail());
+        List<Usuario> usuarios = persona.getUsuarios();
+        for (Usuario det: usuarios) {
+            det.setPersona(o);
+        }
+        o.setUsuarios(usuarios);
+        return repo.save(o);
+
     }
 
     @Override
