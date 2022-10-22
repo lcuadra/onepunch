@@ -12,11 +12,11 @@ import java.util.List;
 public class TipoCuenta  {
 
     @Id
-    @SequenceGenerator(name = "TipoCuenta_seq",
-            sequenceName = "TipoCuenta_seq",
+    @SequenceGenerator(name = "tipoCuenta_seq",
+            sequenceName = "tipoCuenta_seq",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "TipoCuenta_seq")
+            generator = "tipoCuenta_seq")
 
     private  Long id;
     private String tipoCuenta;
@@ -24,8 +24,8 @@ public class TipoCuenta  {
 
     @OneToMany  (mappedBy = "id_usuario", cascade = CascadeType.ALL)
     private List<Usuario> usuarios;
-//
-//    @OneToOne(mappedBy = "TipoCuenta")
-//    private Usuario usuario;
+
+    @OneToOne(mappedBy = "tipoCuenta")
+    private Usuario usuario;
 
 }
