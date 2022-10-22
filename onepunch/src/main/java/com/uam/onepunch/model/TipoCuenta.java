@@ -24,8 +24,8 @@ public class TipoCuenta  {
 
     @OneToMany  (mappedBy = "id_usuario", cascade = CascadeType.ALL)
     private List<Usuario> usuarios;
-
-    @OneToOne(mappedBy = "TipoCuenta")
-    private Usuario usuario;
+//
+//    @OneToOne(mappedBy = "TipoCuenta")
+//    private Usuario usuario;
 
 }

@@ -25,7 +25,7 @@ public class Persona {
     private String nombres;
     private  String telefono;
 
-    @OneToMany (mappedBy = "idPersona", cascade = CascadeType.ALL)
+    @OneToMany (mappedBy = "persona", cascade = CascadeType.ALL)
     private List<Usuario> usuarios;
 
 }

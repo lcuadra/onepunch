@@ -17,7 +17,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "usuario_seq")
 
-    private Long id;
+    private Long id_usuario;
     private String nombreUsuario;
     private String pwUsuario;
 
@@ -25,9 +25,9 @@ public class Usuario {
     @JoinColumn(name = "id_persona")
     @JsonProperty ( access = JsonProperty.Access.WRITE_ONLY)
     private Persona persona;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_tipoCuenta", referencedColumnName = "id")
-    private TipoCuenta tipoCuenta;
+//
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_tipoCuenta", referencedColumnName = "id")
+//    private TipoCuenta tipoCuenta;
 
 }
