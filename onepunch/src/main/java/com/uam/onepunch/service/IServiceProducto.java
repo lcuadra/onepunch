@@ -14,4 +14,8 @@ public interface IServiceProducto {
     public Producto saveProduct(Producto product);
 
     public void deleteProduct(Long id);
+
+    List<Producto> listAll();
+
+    Producto saveProducto(Producto producto);
 }
