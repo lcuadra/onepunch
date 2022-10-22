@@ -14,14 +14,23 @@ public class impServiceProducto implements IServiceProducto{
 /* AÑADIR CONEXCION CON OTRA TABLA AQUI*/
 
     @Override
-    public List<Producto> listAll(){
+    public List<Producto>  getListProducto(){
         return repoProd.findAll();
     }
 
+    @Override
+    public Producto findById(Long id) {
+        return repoProd.findById(id).get()  ;
+    }
 
     @Override
     public Producto saveProducto(Producto producto){
         return repoProd.save(producto);
+    }
+
+    @Override
+    public void deleteProducto(Long id) {
+        repoProd.deleteById(id);
     }
 
 }

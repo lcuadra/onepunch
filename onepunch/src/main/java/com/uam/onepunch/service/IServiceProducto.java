@@ -11,11 +11,9 @@ public interface IServiceProducto {
 
     public Producto findById(Long id);
 
-    public Producto saveProduct(Producto product);
+    public Producto saveProducto(Producto product);
 
-    public void deleteProduct(Long id);
-
-    List<Producto> listAll();
-
-    Producto saveProducto(Producto producto);
+    public void deleteProducto(Long id);
 }
+
+
