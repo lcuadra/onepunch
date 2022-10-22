@@ -16,7 +16,6 @@ public class ControllerPersona {
     @Autowired
     private IServicePersona service;
 
-    /*TESTEO DE BRANCH*/
     @GetMapping("/list")
     public List<Persona> getAll(){
         return service.getListPersona();
