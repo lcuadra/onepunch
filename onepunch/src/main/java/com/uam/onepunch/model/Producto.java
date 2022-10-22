@@ -4,17 +4,17 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Entity
+/*@Entity
 @Data
-@Table(name = "PRODUCT")
+@Table(name = "PRODUCTO")*/
 public class Producto {
 
-    @Id
+  /*  @Id
     @SequenceGenerator(name = "product_seq",
             sequenceName = "product_seq",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "product_seq")
+            generator = "product_seq")*/
     private Long id;
     private String nombre;
     private String descripcion;
