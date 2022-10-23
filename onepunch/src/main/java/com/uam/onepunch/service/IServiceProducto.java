@@ -11,7 +11,7 @@ public interface IServiceProducto {
 
     public Producto findById(Long id);
 
-    public Producto saveProducto(Producto product);
+    public Producto saveProducto(Producto producto);
 
     public void deleteProducto(Long id);
 }
