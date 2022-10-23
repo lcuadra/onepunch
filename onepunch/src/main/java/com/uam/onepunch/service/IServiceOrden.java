@@ -11,7 +11,7 @@ public interface IServiceOrden {
 
     public Orden findById(Long idorden);
 
-    public Orden saveorden(Orden orden);
+    public Orden saveOrden(Orden orden);
 
-    public void deleteorden(Long id);
+    public void deleteOrden(Long id);
 }
