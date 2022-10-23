@@ -1,6 +1,8 @@
 package com.uam.onepunch.service;
 
+import com.uam.onepunch.model.Categoria;
 import com.uam.onepunch.model.Producto;
+import com.uam.onepunch.repository.ICategoriaRepository;
 import com.uam.onepunch.repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,7 +13,8 @@ public class impServiceProducto implements IServiceProducto{
     @Autowired
     private IProductoRepository repoProd;
 
-/* AÑADIR CONEXCION CON OTRA TABLA AQUI*/
+    @Autowired
+    private ICategoriaRepository repoCat;
 
     @Override
     public List<Producto>  getListProducto(){
@@ -25,7 +28,16 @@ public class impServiceProducto implements IServiceProducto{
 
     @Override
     public Producto saveProducto(Producto producto){
-        return repoProd.save(producto);
+        List<Categoria> categorias = producto.getCategorias();
+        producto.setCategorias(null);
+        Producto p = repoProd.save(producto);
+        for (Categoria cat : categorias){
+            cat.setIdProducto(p.getId());
+        }
+        repoCat.saveAll(categorias);
+        p.setCategorias(categorias);
+
+        return p;
     }
 
     @Override

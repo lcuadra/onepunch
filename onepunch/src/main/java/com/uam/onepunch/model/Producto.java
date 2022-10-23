@@ -3,6 +3,7 @@ package com.uam.onepunch.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,4 +19,7 @@ public class Producto {
     private Long id;
     private String nombre;
     private String descripcion;
+
+    @OneToMany(mappedBy = "idCategoria")
+    private List<Categoria> categorias;
 }
