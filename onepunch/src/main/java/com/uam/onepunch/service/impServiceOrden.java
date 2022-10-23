@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class impServiceOrden {
+public class impServiceOrden implements IServiceOrden {
     @Autowired
     private IOrdenRepository repoOrd;
 
