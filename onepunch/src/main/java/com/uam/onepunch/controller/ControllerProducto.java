@@ -5,7 +5,9 @@ import com.uam.onepunch.service.IServiceProducto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ControllerProducto {
@@ -19,8 +21,9 @@ public class ControllerProducto {
     }
 
     @PostMapping("/save")
-    public Producto saveProducto(@RequestBody Producto producto){
-        return service.saveProducto(producto);
+    public Producto saveProducto (@RequestPart String productDto, @RequestPart MultipartFile image) throws IOException {
+
+        return service.saveProducto(productDto, image);
     }
 
     @PostMapping("/{id}")

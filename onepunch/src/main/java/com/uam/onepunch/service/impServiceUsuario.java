@@ -6,9 +6,13 @@ import com.uam.onepunch.model.Usuario;
 import com.uam.onepunch.repository.IPersonaRepository;
 import com.uam.onepunch.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@Component("ServiceUsuario")
 public class impServiceUsuario  implements  IServiceUsuario {
     @Autowired
     private IUsuarioRepository repo;

@@ -19,6 +19,7 @@ public class Producto {
     private Long id;
     private String nombre;
     private String descripcion;
+    private String imagen;
 
     @OneToMany(mappedBy = "idCategoria")
     private List<Categoria> categorias;

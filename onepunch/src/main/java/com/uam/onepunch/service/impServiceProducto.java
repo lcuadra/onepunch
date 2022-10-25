@@ -1,17 +1,27 @@
 package com.uam.onepunch.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uam.onepunch.model.Categoria;
 import com.uam.onepunch.model.Producto;
 import com.uam.onepunch.repository.ICategoriaRepository;
 import com.uam.onepunch.repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class impServiceProducto implements IServiceProducto{
 
     @Autowired
     private IProductoRepository repoProd;
+
+    @Value("/{$ruta.archivos.imagen}")
+    private String ruta;
 
     @Autowired
     private ICategoriaRepository repoCat;
@@ -27,17 +37,16 @@ public class impServiceProducto implements IServiceProducto{
     }
 
     @Override
-    public Producto saveProducto(Producto producto){
-        List<Categoria> categorias = producto.getCategorias();
-        producto.setCategorias(null);
-        Producto p = repoProd.save(producto);
-        for (Categoria cat : categorias){
-            cat.setIdProducto(p.getId());
+    public Producto saveProducto(String ProductDto, MultipartFile image) throws IOException {
+        byte[] imgByte = image.getBytes();
+        Path path = Paths.get (ruta + "//" + image.getOriginalFilename());
+        if (!Files.exists(path)) {
+            Files.write(path, imgByte);
         }
-        repoCat.saveAll(categorias);
-        p.setCategorias(categorias);
-
-        return p;
+        ObjectMapper objectMapper = new ObjectMapper();
+        Producto product = objectMapper.readValue(ProductDto, Producto.class);
+        product.setImagen(image.getOriginalFilename());
+        return repoProd.save(product);
     }
 
     @Override
