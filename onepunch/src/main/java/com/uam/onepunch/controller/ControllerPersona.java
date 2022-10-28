@@ -26,12 +26,13 @@ public class ControllerPersona {
         return service.savePersona(persona);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/find/{id}")
     public Persona getPersona(@PathVariable Long id){
         return service.findById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deletePersona(){
+    @DeleteMapping("/delete/{id}")
+    public void deletePersona(Long id){
+        service.deletePersona(id);
     }
 }

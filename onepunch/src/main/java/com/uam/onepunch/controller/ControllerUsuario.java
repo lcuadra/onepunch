@@ -29,12 +29,14 @@ public class ControllerUsuario {
                 service.saveUsuario(usuario);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/find/{id}")
     public Usuario getUsuario(@PathVariable Long id) {
 
         return service.findById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteUsuario(){};
+    @DeleteMapping("/delete/{id}")
+    public void deleteUsuario(Long id){
+        service.deleteUsuario(id);
+    };
 }   

@@ -10,6 +10,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+
+@RestController
+@RequestMapping("/producto")
+@CrossOrigin
 public class ControllerProducto {
     @Qualifier("ServiceProducto")
     @Autowired
@@ -21,17 +25,18 @@ public class ControllerProducto {
     }
 
     @PostMapping("/save")
-    public Producto saveProducto (@RequestPart String productDto, @RequestPart MultipartFile image) throws IOException {
+    public Producto saveProducto (@RequestPart("producto") String productDto, @RequestPart("imagen") MultipartFile image) throws IOException {
 
         return service.saveProducto(productDto, image);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("{id}")
     public Producto getProducto(@PathVariable Long id){
         return service.findById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteProducto(){
+    @DeleteMapping("delete/{id}")
+    public void  deleteProducto(@PathVariable Long id) throws IOException {
+         service.deleteProducto(id);
     }
 }

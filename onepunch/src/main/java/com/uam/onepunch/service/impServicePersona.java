@@ -40,6 +40,7 @@ public class impServicePersona implements IServicePersona {
 
     @Override
     public void deletePersona(Long id) {
+
         repo.deleteById(id);
     }
 }

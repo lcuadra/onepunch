@@ -23,7 +23,7 @@ public class Persona {
     private String email;
     private String fechaNacimiento;
     private String nombres;
-    private  String telefono;
+    private String telefono;
 
     @OneToMany (mappedBy = "persona", cascade = CascadeType.ALL)
     private List<Usuario> usuarios;
