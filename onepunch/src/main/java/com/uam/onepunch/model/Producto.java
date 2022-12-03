@@ -10,6 +10,9 @@ import java.util.List;
 @Table(name = "PRODUCTO")
 public class Producto {
 
+    private Boolean display;
+    private int cantidad;
+
     @Id
     @SequenceGenerator(name = "product_seq",
             sequenceName = "product_seq",

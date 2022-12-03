@@ -13,15 +13,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/producto")
-@CrossOrigin
+@CrossOrigin ("*")
 public class ControllerProducto {
     @Qualifier("ServiceProducto")
     @Autowired
     private IServiceProducto service;
 
     @GetMapping("/list")
-    public List<Producto> getAll(){
-        return service.getListProducto();
+    public List<Producto> getProductDisplay(){
+        return service.getProductDisplay();
     }
 
     @PostMapping("/save")
@@ -39,4 +39,11 @@ public class ControllerProducto {
     public void  deleteProducto(@PathVariable Long id) throws IOException {
          service.deleteProducto(id);
     }
+    @PostMapping("/saveJson")
+    public void  saveProductoJson(@RequestBody Producto producto) {
+        service.saveProductoJson(producto);
+    }
+
+    @GetMapping("/listAll")
+    public List<Producto> getAll(){return service.getListProducto();}
 }

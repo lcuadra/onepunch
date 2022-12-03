@@ -15,6 +15,10 @@ public interface IServiceProducto {
 
     public Producto saveProducto(String ProductDto, MultipartFile image) throws IOException;
     void deleteProducto(Long id) throws IOException;
+
+    Producto saveProductoJson(Producto producto);
+
+    List<Producto> getProductDisplay();
 }
 
 
