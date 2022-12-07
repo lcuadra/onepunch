@@ -9,34 +9,34 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/usuario")
-@CrossOrigin
-public class ControllerUsuario {
-    @Qualifier("ServiceUsuario")
-    @Autowired
-    private IServiceUsuario service;
+    @RestController
+    @RequestMapping("/usuario")
+    @CrossOrigin
+    public class ControllerUsuario {
+        @Qualifier("ServiceUsuario")
+        @Autowired
+        private IServiceUsuario service;
 
 
-    @GetMapping("/list")
-    public List<Usuario> getAll() {
-        return service.getListUsuario();
+        @GetMapping("/list")
+        public List<Usuario> getAll() {
+            return service.getListUsuario();
+        }
+
+        @PostMapping("/save")
+        public Usuario saveUsuario(@RequestBody Usuario usuario) {
+            return
+                    service.saveUsuario(usuario);
+        }
+
+        @PostMapping("/find/{id}")
+        public Usuario getUsuario(@PathVariable Long id) {
+
+            return service.findById(id);
+        }
+
+        @DeleteMapping("/delete/{id}")
+        public void deleteUsuario(Long id){
+            service.deleteUsuario(id);
     }
-
-    @PostMapping("/save")
-    public Usuario saveUsuario(@RequestBody Usuario usuario) {
-        return
-                service.saveUsuario(usuario);
-    }
-
-    @PostMapping("/find/{id}")
-    public Usuario getUsuario(@PathVariable Long id) {
-
-        return service.findById(id);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public void deleteUsuario(Long id){
-        service.deleteUsuario(id);
-    };
-}   
+}

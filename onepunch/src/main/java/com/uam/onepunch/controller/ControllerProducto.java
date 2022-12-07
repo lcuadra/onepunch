@@ -37,7 +37,7 @@ public class ControllerProducto {
 
     @DeleteMapping("delete/{id}")
     public void  deleteProducto(@PathVariable Long id) throws IOException {
-         service.deleteProducto(id);
+        service.deleteProducto(id);
     }
     @PostMapping("/saveJson")
     public void  saveProductoJson(@RequestBody Producto producto) {

@@ -9,7 +9,7 @@ import java.util.List;
 public interface IServiceOrden {
     public List<Orden> getListOrden();
 
-    public Orden findById(Long idorden);
+    public Orden findById(Long idOrden);
 
     public Orden saveOrden(Orden orden);
 

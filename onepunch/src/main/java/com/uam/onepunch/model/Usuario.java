@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Data
 @Table(name = "Usuario")
 public class Usuario {
+    private Boolean display;
+
     @Id
     @SequenceGenerator(name = "usuario_seq",
             sequenceName = "usuario_seq",
@@ -17,17 +19,10 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "usuario_seq")
 
-    private Long id_usuario;
-    private String nombreUsuario;
-    private String pwUsuario;
-
-    @ManyToOne
-    @JoinColumn(name = "id_persona")
-    @JsonProperty ( access = JsonProperty.Access.WRITE_ONLY)
-    private Persona persona;
-
-  @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_tipoCuenta", referencedColumnName = "id")
-    private TipoCuenta tipoCuenta;
-
+    private String pw;
+    private String nombres;
+    private String apellidos;
+    private String email;
+    private String telefono;
+    private String direccion;
 }

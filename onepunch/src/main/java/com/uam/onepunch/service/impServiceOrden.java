@@ -3,10 +3,13 @@ package com.uam.onepunch.service;
 import com.uam.onepunch.model.Orden;
 import com.uam.onepunch.repository.IOrdenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component("ServiceOrden")
 public class impServiceOrden implements IServiceOrden {
+
     @Autowired
     private IOrdenRepository repoOrd;
 
@@ -16,8 +19,8 @@ public class impServiceOrden implements IServiceOrden {
     }
 
     @Override
-        public Orden findById(Long idorden) {
-        return repoOrd.findById(idorden).get()  ;
+        public Orden findById(Long idOrden) {
+        return repoOrd.findById(idOrden).get()  ;
     }
 
     @Override
@@ -26,8 +29,8 @@ public class impServiceOrden implements IServiceOrden {
     }
 
     @Override
-    public void deleteOrden(Long idorden) {
-        repoOrd.deleteById(idorden);
+    public void deleteOrden(Long idOrden) {
+        repoOrd.deleteById(idOrden);
     }
 
 }

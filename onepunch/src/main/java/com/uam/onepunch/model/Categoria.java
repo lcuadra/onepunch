@@ -1,8 +1,10 @@
 package com.uam.onepunch.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,5 +21,5 @@ public class Categoria {
     private String categoria;
     private String descripcion;
 
-    private Long idProducto;
+    private Boolean display;
 }

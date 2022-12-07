@@ -1,9 +1,6 @@
 package com.uam.onepunch.service;
 
-import com.uam.onepunch.model.Persona;
-import com.uam.onepunch.model.TipoCuenta;
 import com.uam.onepunch.model.Usuario;
-import com.uam.onepunch.repository.IPersonaRepository;
 import com.uam.onepunch.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,13 +31,16 @@ public class impServiceUsuario  implements  IServiceUsuario {
 
     @Override
     public Usuario saveUsuario(Usuario usuario) {
+        Usuario o = new Usuario();
+        o.setEmail(usuario.getEmail());
+        o.setPw(usuario.getPw());
+        o.setNombres(usuario.getNombres());
+        o.setApellidos(usuario.getApellidos());
+        o.setTelefono(usuario.getTelefono());
 
-        Usuario u = new Usuario();
-        u.setNombreUsuario((usuario.getNombreUsuario()));
-        u.setPwUsuario(usuario.getPwUsuario());
-
-        return repo.save(u);
+        return repo.save(o);
+    }
 
 
     }
-}
+
